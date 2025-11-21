@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mondrian's Canvas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1>
+                <span class="en">Mondrian's Canvas</span>
+                <span class="cn">蒙德里安畫布</span>
+            </h1>
+            <div class="controls">
+                <div class="control-item">
+                    <span class="en">Level</span>
+                    <span class="cn">關卡</span>
+                    <span id="level-display">1</span>
+                </div>
+                <div class="control-item">
+                    <span class="en">Time</span>
+                    <span class="cn">時間</span>
+                    <span id="timer-display">30s</span>
+                </div>
+                <button id="btn-check">
+                    <span class="en">Check Match</span>
+                    <span class="cn">檢查匹配</span>
+                </button>
+                <div class="control-item">
+                    <span class="en">Score</span>
+                    <span class="cn">本關分數</span>
+                    <span id="score-display">0%</span>
+                </div>
+                <div class="control-item">
+                    <span class="en">Total</span>
+                    <span class="cn">總分</span>
+                    <span id="total-score-display">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="canvas-container">
+                <h2>
+                    <span class="en">Target</span>
+                    <span class="cn">目標</span>
+                </h2>
+                <div id="target-canvas" class="mondrian-canvas"></div>
+            </div>
+
+            <div class="canvas-container">
+                <h2>
+                    <span class="en">Your Canvas</span>
+                    <span class="cn">你的畫布</span>
+                </h2>
+                <div id="player-canvas" class="mondrian-canvas"></div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="palette">
+                <div class="color-swatch selected" data-color="#F0F0F0" style="background-color: #F0F0F0;"></div>
+                <!-- White -->
+                <div class="color-swatch" data-color="#E30022" style="background-color: #E30022;">
+                </div> <!-- Red -->
+                <div class="color-swatch" data-color="#0078BF" style="background-color: #0078BF;">
+                </div> <!-- Blue -->
+                <div class="color-swatch" data-color="#FFD100" style="background-color: #FFD100;">
+                </div> <!-- Yellow -->
+                <div class="color-swatch" data-color="#111111" style="background-color: #111111;">
+                </div> <!-- Black -->
+            </div>
+            <div class="tools">
+                <button id="tool-split-h" class="tool-btn">
+                    <span class="en">Split Horizontal</span>
+                    <span class="cn">水平切割</span>
+                </button>
+                <button id="tool-split-v" class="tool-btn">
+                    <span class="en">Split Vertical</span>
+                    <span class="cn">垂直切割</span>
+                </button>
+                <button id="tool-paint" class="tool-btn selected">
+                    <span class="en">Paint</span>
+                    <span class="cn">填色</span>
+                </button>
+            </div>
+        </footer>
+
+        <!-- Start Screen Overlay -->
+        <div id="start-screen" class="modal">
+            <div class="modal-content">
+                <h1>
+                    <span class="en">Mondrian's Canvas</span>
+                    <span class="cn">蒙德里安畫布</span>
+                </h1>
+                <p>
+                    <span class="en">Recreate the target pattern. You have 30 seconds per level!</span>
+                    <br>
+                    <span class="cn" style="font-size: 0.8em; color: #666;">複製目標圖案。每關只有 30 秒！</span>
+                </p>
+                <button id="btn-start-game">
+                    <span class="en">Start Game</span>
+                    <span class="cn">開始遊戲</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Custom Modal Overlay -->
+        <div id="game-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2 id="modal-title">Level Complete!</h2>
+                <p id="modal-message">Score: 85%</p>
+                <div id="leaderboard-section" class="hidden">
+                    <h3>High Scores / 排行榜</h3>
+                    <ul id="leaderboard-list"></ul>
+                </div>
+                <button id="modal-action-btn">Next Level</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
