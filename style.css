@@ -273,14 +273,77 @@ footer {
 }
 
 /* Responsive adjustments */
-@media (max-width: 900px) {
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        height: auto;
+        /* Allow scrolling if needed */
+        overflow-y: auto;
+    }
+
+    #app {
+        height: auto;
+        min-height: 100vh;
+        padding: 5px;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .controls {
+        width: 100%;
+        justify-content: space-around;
+        gap: 5px;
+    }
+
+    .control-item {
+        font-size: 0.9rem;
+    }
+
     main {
         flex-direction: column;
         gap: 20px;
+        padding: 10px;
+    }
+
+    .canvas-container {
+        width: 100%;
+        max-width: 350px;
+        /* Limit max size on mobile */
     }
 
     .mondrian-canvas {
-        width: 300px;
-        height: 300px;
+        width: 100%;
+        /* Fluid width */
+        height: auto;
+        /* Reset fixed height */
+        aspect-ratio: 1 / 1;
+        /* Keep square */
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 15px;
+        padding-bottom: 20px;
+    }
+
+    .tools {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .tool-btn {
+        flex: 1;
+        /* Buttons share width */
+        padding: 10px 5px;
+        font-size: 0.9rem;
+    }
+
+    .palette {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
