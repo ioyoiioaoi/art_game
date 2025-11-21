@@ -6,7 +6,6 @@
     --color-white: #F0F0F0;
     --border-width: 4px;
     --font-main: 'Courier New', Courier, monospace;
-    /* Mondrian-esque geometric feel */
 }
 
 * {
@@ -33,7 +32,6 @@ body {
     height: 100%;
     padding: 10px;
     position: relative;
-    /* For modal positioning */
 }
 
 header {
@@ -77,44 +75,33 @@ h1 .cn {
     color: #666;
 }
 
-button {
-    background-color: white;
-    border: var(--border-width) solid var(--color-black);
-    padding: 8px 16px;
-    font-family: var(--font-main);
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.1s, background-color 0.2s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    line-height: 1.2;
-}
-
-button .cn {
-    font-size: 0.8em;
-    margin-top: 2px;
-    font-weight: normal;
-}
-
-button:hover {
-    background-color: var(--color-yellow);
-    transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--color-black);
-}
-
-button:active {
-    transform: translate(0, 0);
-    box-shadow: none;
-}
-
+/* Main Layout with Flexbox Ordering */
 main {
     flex: 1;
     display: flex;
+    flex-wrap: wrap;
+    /* Allows button to wrap to next line on desktop */
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 40px;
     padding: 20px;
+}
+
+/* Desktop Order: Target(1), Player(2), Button(3) */
+#target-container {
+    order: 1;
+}
+
+#player-container {
+    order: 2;
+}
+
+#btn-check {
+    order: 3;
+    width: 100%;
+    /* Force new line */
+    max-width: 300px;
+    margin-top: 20px;
 }
 
 .canvas-container {
@@ -153,6 +140,250 @@ h2 .cn {
 
 .block:hover {
     opacity: 0.9;
+}
+
+/* Button Styles */
+button {
+    background-color: white;
+    border: var(--border-width) solid var(--color-black);
+    padding: 8px 16px;
+    font-family: var(--font-main);
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.1s, background-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.2;
+}
+
+button .cn {
+    font-size: 0.8em;
+    margin-top: 2px;
+    font-weight: normal;
+}
+
+button:hover {
+    background-color: var(--color-yellow);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--color-black);
+}
+
+button:active {
+    transform: translate(0, 0);
+    box-shadow: none;
+}
+
+#btn-check {
+    background-color: var(--color-red);
+    color: white;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    z-index: 10;
+}
+
+#btn-check:hover {
+    background-color: #c2001e;
+    box-shadow: 4px 4px 0 var(--color-black);
+}
+
+#btn-check .cn {
+    color: #f0f0f0;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border-top: var(--border-width) solid var(--color-black);
+    background-color: white;
+}
+
+.palette {
+    display: flex;
+    gap: 10px;
+}
+
+.color-swatch {
+    width: 40px;
+    height: 40px;
+    border: var(--border-width) solid var(--color-black);
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.color-swatch.selected {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-color: var(--color-black);
+}
+
+.tools {
+    display: flex;
+    gap: 10px;
+}
+
+.tool-btn.selected {
+    background-color: var(--color-black);
+    color: white;
+}
+
+.tool-btn.selected .cn {
+    color: #ddd;
+}
+
+/* Modal Styles */
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background-color: white;
+    border: var(--border-width) solid var(--color-black);
+    padding: 40px;
+    text-align: center;
+    box-shadow: 10px 10px 0 var(--color-red);
+    max-width: 500px;
+    width: 90%;
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--color-black);
+}
+
+.modal-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+#leaderboard-section {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+#leaderboard-list {
+    list-style: none;
+    padding: 0;
+    border: 2px solid var(--color-black);
+}
+
+#leaderboard-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+}
+
+#leaderboard-list li:last-child {
+    border-bottom: none;
+}
+
+#modal-action-btn {
+    font-size: 1.2rem;
+    padding: 10px 30px;
+    background-color: var(--color-blue);
+    color: white;
+    border-color: var(--color-black);
+}
+
+}
+
+h2 {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 .cn {
+    font-size: 0.7em;
+    color: #555;
+    font-weight: normal;
+}
+
+.mondrian-canvas {
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    border: var(--border-width) solid var(--color-black);
+    position: relative;
+}
+
+.block {
+    position: absolute;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.block:hover {
+    opacity: 0.9;
+}
+
+/* Button Styles */
+button {
+    background-color: white;
+    border: var(--border-width) solid var(--color-black);
+    padding: 8px 16px;
+    font-family: var(--font-main);
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.1s, background-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.2;
+}
+
+button .cn {
+    font-size: 0.8em;
+    margin-top: 2px;
+    font-weight: normal;
+}
+
+button:hover {
+    background-color: var(--color-yellow);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--color-black);
+}
+
+button:active {
+    transform: translate(0, 0);
+    box-shadow: none;
+}
+
+#btn-check {
+    background-color: var(--color-red);
+    color: white;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    z-index: 10;
+}
+
+#btn-check:hover {
+    background-color: #c2001e;
+    box-shadow: 4px 4px 0 var(--color-black);
+}
+
+#btn-check .cn {
+    color: #f0f0f0;
 }
 
 footer {
@@ -273,11 +504,9 @@ footer {
 }
 
 /* Responsive adjustments */
-/* Responsive adjustments */
 @media (max-width: 768px) {
     body {
         height: auto;
-        /* Allow scrolling if needed */
         overflow-y: auto;
     }
 
@@ -305,23 +534,35 @@ footer {
 
     main {
         flex-direction: column;
+        align-items: center;
         gap: 20px;
         padding: 10px;
+    }
+
+    /* Mobile Order: Target(1), Player(2), Button(3) */
+    #target-container {
+        order: 1;
+    }
+
+    #player-container {
+        order: 2;
+    }
+
+    #btn-check {
+        order: 3;
+        width: auto;
+        margin: 20px 0;
     }
 
     .canvas-container {
         width: 100%;
         max-width: 350px;
-        /* Limit max size on mobile */
     }
 
     .mondrian-canvas {
         width: 100%;
-        /* Fluid width */
         height: auto;
-        /* Reset fixed height */
         aspect-ratio: 1 / 1;
-        /* Keep square */
     }
 
     footer {
@@ -337,7 +578,6 @@ footer {
 
     .tool-btn {
         flex: 1;
-        /* Buttons share width */
         padding: 10px 5px;
         font-size: 0.9rem;
     }

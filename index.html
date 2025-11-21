@@ -26,10 +26,6 @@
                     <span class="cn">時間</span>
                     <span id="timer-display">30s</span>
                 </div>
-                <button id="btn-check">
-                    <span class="en">Check Match</span>
-                    <span class="cn">檢查匹配</span>
-                </button>
                 <div class="control-item">
                     <span class="en">Score</span>
                     <span class="cn">本關分數</span>
@@ -44,7 +40,7 @@
         </header>
 
         <main>
-            <div class="canvas-container">
+            <div id="target-container" class="canvas-container">
                 <h2>
                     <span class="en">Target</span>
                     <span class="cn">目標</span>
@@ -52,13 +48,19 @@
                 <div id="target-canvas" class="mondrian-canvas"></div>
             </div>
 
-            <div class="canvas-container">
+            <div id="player-container" class="canvas-container">
                 <h2>
                     <span class="en">Your Canvas</span>
                     <span class="cn">你的畫布</span>
                 </h2>
                 <div id="player-canvas" class="mondrian-canvas"></div>
             </div>
+
+            <!-- Check Match Button -->
+            <button id="btn-check" class="center-btn">
+                <span class="en">Check Match</span>
+                <span class="cn">檢查匹配</span>
+            </button>
         </main>
 
         <footer>
